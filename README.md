@@ -41,7 +41,7 @@ Location-based reporting system to alert of sim swapping, phishing, device switc
 
 ## Download
 
-Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases) or [Nexus](https://nexus6.kydom.net/#browse/browse:Ironchip_Windows_Logon).
+Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases).
 
 ## Logon
 
