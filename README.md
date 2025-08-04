@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Logon showcase gif" src="/assets/icon.png" width="100"/>
+  <img alt="Logon showcase gif" src="./assets/icon.png" width="100"/>
 </p>
 <h1 align="center">Ironchip</h1>
 
@@ -42,96 +42,6 @@ Location-based reporting system to alert of sim swapping, phishing, device switc
 ## Download
 
 Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases).
-
-## Logon
-
-### What it is
-Logon is a custom Windows credential provider designed by [Ironchip](https://www.ironchip.com/) to bring the power of Multi-Factor Authentication (MFA) to your desktop computing environment.
-
-**Cached Passwords:**
-Our simplified access can enhance user experience, making it more convenient and user-friendly. This is especially valuable in a work or personal environment where you're required to log in to various systems multiple times a day.
-
-**Extra Layer:**
-MFA adds an extra layer of protection, requiring multiple forms of authentication, such as a password and a one-time code or push notification. 
-
-**Improved Compliance:**
-MFA helps organizations meet compliance requirements and security standards by implementing robust authentication methods.
-
-### Installing process
-
-To install the Ironchip Authenticator into your device:
- - Run the downloaded installer. This will open the installer stepper:
-   <p align="center">
-     <img alt="Installer first page" src="./assets/first-view.png" width="350"/>
-   </p>
- - Follow the installation steps until you arrive to the **Component Selection View**. To have the ironchip windows logon installed, the **Ironchip Windows Logon** must be `enabled`.
-
-   > In case you want to have available the possibility to log without internet connection, make sure to `enable` **Offline** feature.
-   
-   > In case you want to have available the possibility to cache the password for better user experience, make sure to `enable` **Remember Credentials** feature.
-
-   <p align="center">
-     <img alt="Installer components view" src="./assets/components-view-logon.png" width="350"/>
-   </p>
-
- - Continue to the following page, where you can change the target host and the desired proxy selection:
-   
-   > The host for **Production** environment: `https://api.ironchip.com`.\
-   The host for **Testing** environment: `https://testing.api.ironchip.com`.
-   <p align="center">
-     <img alt="Installer host view" src="./assets/host-view.png" width="350"/>
-   </p>
-
- - Continue to the following page, where you must insert the target **ApiKey** :
-    > The **ApiKey** can be copied or download when [generating the application](https://knowledge.ironchip.com/en/create-mfa-application-on-ironchip) from the [Dashboard](https://app.ironchip.com/).
-   <p align="center">
-     <img alt="Installer apiKey view" src="./assets/apikey-view.png" width="350"/>
-   </p>
-
- - Once the installation process is finished. All you need to do is for an administrator to [give access](https://knowledge.ironchip.com/en/windows-logon) from the [Dashboard](https://app.ironchip.com/).
- > If the **Offline** feature is enabled and the user want to use it, they need to [follow the steps](https://knowledge.ironchip.com/en/user-manual-indentity#offline) to generate the `Time-based one-time password`.
-
-### Disable default credential provider
-
-In order to force user to use **Ironchip Credential Provider**, the default **Windows Credential Provider** must be disabled.
-
-> The paths may vary depending on the language
-
-#### Steps:
-- Now get the **GUID** of the Windows Credential Provider. Normally it's `{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}` but you can check it on the registry under the path `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/registry-provider.png" width="250"/>
-</p>
-
-- Use the key shortcut `⊞ Win` + `R` and paste `gpedit.msc`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/run-view.png" width="250"/>
-</p>
-
-- Then inside the **Local Group Policy Editor** go to `Local Computer Policy > Computer Configuration > Administrative Templates > System > Logon > Exclude Credential Providers`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/local-policy.png" width="250"/>
-</p>
-
-- Enable the exclusion rule and paste the GUID of the Windows Password Credential Provider into the field. Then press apply.
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/apply-rule.png" width="250"/>
-</p>
-
-### Autologon Whitelist
-
-In order to prevent user interact in authentication during autologon on computer start up, there are 2 possibilities
-
-**Whitelist user:**
-Adding user to Registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Ironchip\Logon\Whitelist`. This will whitelist autologon user for any authentication
-
-**Whitelist user just on autologon:**
-Setting AutoLogonSkip to 1 in `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Ironchip\Logon` this will whitelist autologon user for any authentication only during autologon
-
 
 ## Desktop Application
 
