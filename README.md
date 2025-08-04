@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">Ironchip</h1>
 
-<p align="center" back>
+<p align="center">
     <a href="https://www.microsoft.com/software-download/">
     <img alt="Latest release" src="https://img.shields.io/badge/Windows-0078D6?logo=windows"/>
   </a>
@@ -39,14 +39,10 @@ Location-based reporting system to alert of sim swapping, phishing, device switc
  </a>
 </p>
 
-## Download
-
-Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases).
-
 ## Logon
 
 ### What it is
-Logon is a custom Windows credential provider designed by [Ironchip](https://www.ironchip.com/) to bring the power of Multi-Factor Authentication (MFA) to your desktop computing environment.
+Logon is a custom Windows credential provider by [Ironchip](https://www.ironchip.com/) that integrates Multi-Factor Authentication (MFA) directly into the Windows login experience.
 
 **Cached Passwords:**
 Our simplified access can enhance user experience, making it more convenient and user-friendly. This is especially valuable in a work or personal environment where you're required to log in to various systems multiple times a day.
@@ -56,6 +52,28 @@ MFA adds an extra layer of protection, requiring multiple forms of authenticatio
 
 **Improved Compliance:**
 MFA helps organizations meet compliance requirements and security standards by implementing robust authentication methods.
+
+### Download
+Download the latest (`.msi`) installer:
+
+<p align="left">
+  <a href="https://github.com/Ironchip-Security/Ironchip-Windows/releases/latest/download/IronchipWindowsLogon.msi">
+    <img alt="Download Ironchip Installer" src="https://custom-icon-badges.demolab.com/badge/-Download%20Installer-blue?style=for-the-badge&logo=download&logoColor=white">
+  </a>
+</p>
+
+### Basic Usage
+Once you've downloaded the installer:
+
+#### GUI Installation
+
+1. Run the `.msi` installer.
+2. Enable the features you need:
+   - **Ironchip Windows Logon** for secure login.
+   - *(Optional)* **Offline** for no-internet login.
+   - *(Optional)* **Remember Credentials** to cache passwords.
+3. Enter your `ApiKey` when prompted.
+4. Finish setup and assign user access from the [Ironchip Dashboard](https://app.ironchip.com).
 
 ### Installing process
 
