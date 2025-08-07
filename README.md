@@ -43,6 +43,8 @@ Location-based reporting system to alert of sim swapping, phishing, device switc
 
 Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases).
 
+> From 1.8.0 onwards, Logon has been moved to its [own repository](https://github.com/Ironchip-Security/Ironchip-Windows-Logon). If you had the Logon feature installed, it will be removed on update, so make sure to install the Logon from the new repository.
+
 ## Desktop Application
 
 ### What it is
@@ -82,7 +84,7 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
     - The basic command to install an MSI file is as follows:
 
     ```bash
-    msiexec.exe /i Path\To\IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" /q
+    msiexec.exe /i Path\To\IronchipWindowsLogon.msi /q
     ```
 
     Replace "Path\To\IronchipWindowsLogon.msi" with the full path and name of the MSI file. The APIKEY will only be necessary if you want to install the Windows Logon functionality, which can be obtained through the following procedure:
@@ -94,22 +96,12 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
 
     Example 1: Installation of the desktop application functionality and USB functionality
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature,USBFeature" /q
+    msiexec.exe /i IronchipWindowsLogon.msi  IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature,USBFeature" /q
     ```
 
     Example 2: Installation of the desktop application functionality without the USB functionality
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature" /q
-    ```
-
-    Example 3: Installation of the Windows Logon online and offline with cache
-    ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" ADDLOCAL="LogonFeature,OfflineFeature,CachedPasswordsFeature" /q
-    ```
-
-    Example 4: Installation of the Windows Logon only online
-    ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" ADDLOCAL="LogonFeature" /q
+    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature" /q
     ```
 
     - Proxy configuration -> This configuration is only necessary if you want to enable it, as it is disabled by default. We have disabled, automatic, and manual modes, and for this, several properties are configured:
@@ -120,12 +112,13 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
 
     Example 1: Automatic proxy configuration
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" IRONCHIP_PROXY_SELECTED="automatic" /q
+    msiexec.exe /i IronchipWindowsLogon.msi  IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_PROXY_SELECTED="automatic" /q
     ```
 
     Example 2: Manual proxy configuration
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" IRONCHIP_PROXY_SELECTED="manual" IRONCHIP_PROXY_MANUAL_HOST="localhost" IRONCHIP_PROXY_MANUAL_PORT="8080" /q
+    IRONCHIP_HOST="https://api.ironchip.com" 
+    IRONCHIP_PROXY_SELECTED="manual" IRONCHIP_PROXY_MANUAL_HOST="localhost" IRONCHIP_PROXY_MANUAL_PORT="8080" /q
     ```
 4) Wait for it to finish:
     - The installation process may take some time. Stay in the command line until you see the prompt indicating that the installation is complete.
