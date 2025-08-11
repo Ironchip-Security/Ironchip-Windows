@@ -131,9 +131,7 @@ Here's a quick reference table for all available properties you can use when ins
 
 | Property                        | Example Value                            | Description                                                                            |
 |---------------------------------|------------------------------------------|----------------------------------------------------------------------------------------|
-| `IRONCHIP_APIKEY`              | `"12345-abcde"`                          | Required API key to activate Windows Logon or Authenticator features.                 |
 | `IRONCHIP_HOST`                | `"https://api.ironchip.com"`             | Custom API host. Defaults to Ironchip's main production environment.                  |
-| `ADDLOCAL`                     | `"LogonFeature,OfflineFeature"`          | Features to install (comma-separated): LogonFeature, OfflineFeature, etc.             |
 | `IRONCHIP_PROXY_SELECTED`      | `"manual"`                               | Proxy mode: `none` (default), `automatic`, or `manual`.                                |
 | `IRONCHIP_PROXY_MANUAL_HOST`  | `"localhost"`                            | Required only if `IRONCHIP_PROXY_SELECTED` is `manual`.                               |
 | `IRONCHIP_PROXY_MANUAL_PORT`  | `"8080"`                                 | Required only if `IRONCHIP_PROXY_SELECTED` is `manual`.                               |
