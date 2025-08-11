@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Logon showcase gif" src="/assets/icon.png" width="100"/>
+  <img alt="Logon showcase gif" src="./assets/icon.png" width="100"/>
 </p>
 <h1 align="center">Ironchip</h1>
 
@@ -39,117 +39,11 @@ Location-based reporting system to alert of sim swapping, phishing, device switc
  </a>
 </p>
 
-## Logon
+## Download
 
-### What it is
-Logon is a custom Windows credential provider by [Ironchip](https://www.ironchip.com/) that integrates Multi-Factor Authentication (MFA) directly into the Windows login experience.
+Download the latest installer (`.msi`) version from [Release](https://github.com/Ironchip-Security/Ironchip-Windows/releases).
 
-**Cached Passwords:**
-Our simplified access can enhance user experience, making it more convenient and user-friendly. This is especially valuable in a work or personal environment where you're required to log in to various systems multiple times a day.
-
-**Extra Layer:**
-MFA adds an extra layer of protection, requiring multiple forms of authentication, such as a password and a one-time code or push notification. 
-
-**Improved Compliance:**
-MFA helps organizations meet compliance requirements and security standards by implementing robust authentication methods.
-
-### Download
-Download the latest (`.msi`) installer:
-
-<p align="left">
-  <a href="https://github.com/Ironchip-Security/Ironchip-Windows/releases/latest/download/IronchipWindowsLogon.msi">
-    <img alt="Download Ironchip Installer" src="https://custom-icon-badges.demolab.com/badge/-Download%20Installer-blue?style=for-the-badge&logo=download&logoColor=white">
-  </a>
-</p>
-
-### Basic Usage
-Once you've downloaded the installer:
-
-#### GUI Installation
-
-1. Run the `.msi` installer.
-2. Enable the features you need:
-   - **Ironchip Windows Logon** for secure login.
-   - *(Optional)* **Offline** for no-internet login.
-   - *(Optional)* **Remember Credentials** to cache passwords.
-3. Enter your `ApiKey` when prompted.
-4. Finish setup and assign user access from the [Ironchip Dashboard](https://app.ironchip.com).
-
-### Installing process
-
-To install the Ironchip Authenticator into your device:
- - Run the downloaded installer. This will open the installer stepper:
-   <p align="center">
-     <img alt="Installer first page" src="./assets/first-view.png" width="350"/>
-   </p>
- - Follow the installation steps until you arrive to the **Component Selection View**. To have the ironchip windows logon installed, the **Ironchip Windows Logon** must be `enabled`.
-
-   > In case you want to have available the possibility to log without internet connection, make sure to `enable` **Offline** feature.
-   
-   > In case you want to have available the possibility to cache the password for better user experience, make sure to `enable` **Remember Credentials** feature.
-
-   <p align="center">
-     <img alt="Installer components view" src="./assets/components-view-logon.png" width="350"/>
-   </p>
-
- - Continue to the following page, where you can change the target host and the desired proxy selection:
-   
-   > The host for **Production** environment: `https://api.ironchip.com`.\
-   The host for **Testing** environment: `https://testing.api.ironchip.com`.
-   <p align="center">
-     <img alt="Installer host view" src="./assets/host-view.png" width="350"/>
-   </p>
-
- - Continue to the following page, where you must insert the target **ApiKey** :
-    > The **ApiKey** can be copied or download when [generating the application](https://knowledge.ironchip.com/en/create-mfa-application-on-ironchip) from the [Dashboard](https://app.ironchip.com/).
-   <p align="center">
-     <img alt="Installer apiKey view" src="./assets/apikey-view.png" width="350"/>
-   </p>
-
- - Once the installation process is finished. All you need to do is for an administrator to [give access](https://knowledge.ironchip.com/en/windows-logon) from the [Dashboard](https://app.ironchip.com/).
- > If the **Offline** feature is enabled and the user want to use it, they need to [follow the steps](https://knowledge.ironchip.com/en/user-manual-indentity#offline) to generate the `Time-based one-time password`.
-
-### Disable default credential provider
-
-In order to force user to use **Ironchip Credential Provider**, the default **Windows Credential Provider** must be disabled.
-
-> The paths may vary depending on the language
-
-#### Steps:
-- Now get the **GUID** of the Windows Credential Provider. Normally it's `{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}` but you can check it on the registry under the path `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{60b78e88-ead8-445c-9cfd-0b87f74ea6cd}`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/registry-provider.png" width="250"/>
-</p>
-
-- Use the key shortcut `⊞ Win` + `R` and paste `gpedit.msc`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/run-view.png" width="250"/>
-</p>
-
-- Then inside the **Local Group Policy Editor** go to `Local Computer Policy > Computer Configuration > Administrative Templates > System > Logon > Exclude Credential Providers`
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/local-policy.png" width="250"/>
-</p>
-
-- Enable the exclusion rule and paste the GUID of the Windows Password Credential Provider into the field. Then press apply.
-
-<p align="center">
-  <img alt="Logon showcase gif" src="./assets/apply-rule.png" width="250"/>
-</p>
-
-### Autologon Whitelist
-
-In order to prevent user interact in authentication during autologon on computer start up, there are 2 possibilities
-
-**Whitelist user:**
-Adding user to Registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Ironchip\Logon\Whitelist`. This will whitelist autologon user for any authentication
-
-**Whitelist user just on autologon:**
-Setting AutoLogonSkip to 1 in `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Ironchip\Logon` this will whitelist autologon user for any authentication only during autologon
-
+> From 1.8.0 onwards, Logon has been moved to its [own repository](https://github.com/Ironchip-Security/Ironchip-Windows-Logon). If you had the Logon feature installed, it will be removed on update, so make sure to install the Logon from the new repository.
 
 ## Desktop Application
 
@@ -190,7 +84,7 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
     - The basic command to install an MSI file is as follows:
 
     ```bash
-    msiexec.exe /i Path\To\IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" /q
+    msiexec.exe /i Path\To\IronchipWindowsLogon.msi /q
     ```
 
     Replace "Path\To\IronchipWindowsLogon.msi" with the full path and name of the MSI file. The APIKEY will only be necessary if you want to install the Windows Logon functionality, which can be obtained through the following procedure:
@@ -202,22 +96,12 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
 
     Example 1: Installation of the desktop application functionality and USB functionality
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature,USBFeature" /q
+    msiexec.exe /i IronchipWindowsLogon.msi  IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature,USBFeature" /q
     ```
 
     Example 2: Installation of the desktop application functionality without the USB functionality
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature" /q
-    ```
-
-    Example 3: Installation of the Windows Logon online and offline with cache
-    ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" ADDLOCAL="LogonFeature,OfflineFeature,CachedPasswordsFeature" /q
-    ```
-
-    Example 4: Installation of the Windows Logon only online
-    ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" ADDLOCAL="LogonFeature" /q
+    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_HOST="https://api.ironchip.com" ADDLOCAL="AuthenticatorFeature" /q
     ```
 
     - Proxy configuration -> This configuration is only necessary if you want to enable it, as it is disabled by default. We have disabled, automatic, and manual modes, and for this, several properties are configured:
@@ -228,12 +112,13 @@ The installation of Ironchip Windows using commands (cmd) with the program "msie
 
     Example 1: Automatic proxy configuration
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" IRONCHIP_PROXY_SELECTED="automatic" /q
+    msiexec.exe /i IronchipWindowsLogon.msi  IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_PROXY_SELECTED="automatic" /q
     ```
 
     Example 2: Manual proxy configuration
     ```bash
-    msiexec.exe /i IronchipWindowsLogon.msi IRONCHIP_APIKEY="$apikey" IRONCHIP_HOST="https://api.ironchip.com" IRONCHIP_APIKEY="$apikey" IRONCHIP_PROXY_SELECTED="manual" IRONCHIP_PROXY_MANUAL_HOST="localhost" IRONCHIP_PROXY_MANUAL_PORT="8080" /q
+    IRONCHIP_HOST="https://api.ironchip.com" 
+    IRONCHIP_PROXY_SELECTED="manual" IRONCHIP_PROXY_MANUAL_HOST="localhost" IRONCHIP_PROXY_MANUAL_PORT="8080" /q
     ```
 4) Wait for it to finish:
     - The installation process may take some time. Stay in the command line until you see the prompt indicating that the installation is complete.
